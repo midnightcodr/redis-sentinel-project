@@ -1,0 +1,9 @@
+FROM bitnami/minideb
+RUN install_packages curl build-essential tcl pkg-config watch
+RUN curl -O http://download.redis.io/redis-stable.tar.gz && tar xzvf redis-stable.tar.gz
+RUN cd redis-stable && make && make install
+RUN mkdir /etc/redis /var/lib/redis
+COPY node1-redis.conf /etc/redis/redis.conf
+COPY sentinel.conf /etc/redis/sentinel.conf
+COPY start.sh start.sh
+CMD sh start.sh

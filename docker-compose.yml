@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  node1:
+    image: basenode
+    build:
+      context: ./bag
+      dockerfile: node1-Dockerfile
+
+  node2:
+    build:
+      context: ./bag
+      dockerfile: node2-Dockerfile
+
+  node3:
+    build:
+      context: ./bag
+      dockerfile: node2-Dockerfile
